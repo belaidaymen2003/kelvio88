@@ -42,24 +42,19 @@ const payoutMethods = [
   { id: "swift", label: "SWIFT settlement" },
 ];
 
-const cityOptions = [
-  "Riyadh",
-  "Jeddah",
-  "Doha",
-  "Paris",
-  "Shanghai",
-  "Lagos",
-];
+const cityOptions = ["Riyadh", "Jeddah", "Doha", "Paris", "Shanghai", "Lagos"];
 
 const conciergeHighlights = [
   {
     title: "Concierge onboarding",
-    description: "Dedicated architects align policies, corridors, and risk guardrails before your first transaction.",
+    description:
+      "Dedicated architects align policies, corridors, and risk guardrails before your first transaction.",
     pill: "72h go-live",
   },
   {
     title: "Granular controls",
-    description: "Role-aware console with instant limits, beneficiary management, and secure approvals.",
+    description:
+      "Role-aware console with instant limits, beneficiary management, and secure approvals.",
     pill: "Bank-grade",
   },
 ];
@@ -67,19 +62,21 @@ const conciergeHighlights = [
 const velocityHighlights = [
   {
     title: "One tap disbursements",
-    description: "Dispatch multi-currency payouts across 184 markets with real-time compliance checks embedded.",
+    description:
+      "Dispatch multi-currency payouts across 184 markets with real-time compliance checks embedded.",
     action: "Schedule demo",
   },
   {
     title: "Diverse funding rails",
-    description: "Blend cards, ACH, RTP, and treasury balances to maximize cost efficiency without losing speed.",
+    description:
+      "Blend cards, ACH, RTP, and treasury balances to maximize cost efficiency without losing speed.",
     action: "Explore rails",
   },
 ];
 
 const exchangeRates = [
   { corridor: "USD �� AED", buy: 3.66, sell: 3.68 },
-  { corridor: "EUR → USD", buy: 1.08, sell: 1.10 },
+  { corridor: "EUR → USD", buy: 1.08, sell: 1.1 },
   { corridor: "GBP �� SAR", buy: 4.66, sell: 4.71 },
   { corridor: "SGD → CNY", buy: 5.28, sell: 5.35 },
   { corridor: "AED → NGN", buy: 403.0, sell: 409.0 },
@@ -108,14 +105,12 @@ const corridorCards = [
 const processSteps = [
   {
     title: "Register for free",
-    description:
-      "Simply sign up online for free and verify your identity.",
+    description: "Simply sign up online for free and verify your identity.",
     linkLabel: "",
   },
   {
     title: "Set up your transfer",
-    description:
-      "Add a recipient’s details and choose which currency.",
+    description: "Add a recipient’s details and choose which currency.",
     linkLabel: "",
   },
   {
@@ -144,13 +139,13 @@ const testimonials = [
     quote:
       "We replicated Yamersal’s velocity with enterprise governance. Approval uplift exceeded every projection.",
     name: "Layla Al-Hassan",
-    role: "Chief Payments Officer, Arcline"
+    role: "Chief Payments Officer, Arcline",
   },
   {
     quote:
       "Treasury visibility is unparalleled. Multi-entity FX hedging now executes in minutes, not days.",
     name: "James Hart",
-    role: "Global Treasurer, ZenithTrust"
+    role: "Global Treasurer, ZenithTrust",
   },
 ];
 
@@ -202,8 +197,14 @@ export default function Index() {
   const [amount, setAmount] = useState(25000);
 
   const { fee, total, receive } = useMemo(() => {
-    const fxRate = destination.code === "NG" ? 402.4 : destination.code === "FR" ? 3.78 : 3.65;
-    const feeRate = payout.id === "instant" ? 0.012 : payout.id === "express" ? 0.008 : 0.006;
+    const fxRate =
+      destination.code === "NG"
+        ? 402.4
+        : destination.code === "FR"
+          ? 3.78
+          : 3.65;
+    const feeRate =
+      payout.id === "instant" ? 0.012 : payout.id === "express" ? 0.008 : 0.006;
     const computedFee = amount * feeRate;
     const computedTotal = amount + computedFee;
     const computedReceive = computedTotal * fxRate;
@@ -220,19 +221,31 @@ export default function Index() {
         id="hero"
         className="relative mx-auto w-full  overflow-hidden  px-6 pt-24 lg:px-10 lg:pt-28"
       >
-  <video className="absolute inset-0 -z-20 h-full w-full object-cover opacity-40" autoPlay muted loop playsInline>
-  <source src="/0_Earth_Global_1920x1080.mov" type="video/quicktime" />
-  <source src="/0_Earth_Global_1920x1080.mp4" type="video/mp4" />
-  <source src="/0_Earth_Global_1920x1080.webm" type="video/webm" />
-  Your browser does not support the video tag.
-</video>
+        <video
+          className="absolute inset-0 -z-20 h-full w-full object-cover opacity-40"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/0_Earth_Global_1920x1080.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 -z-10  opacity-70">
           <div className="absolute inset-0 hero-bg" />
           <div className="absolute -left-40 -top-20 h-96 w-96 rounded-full hero-blob-1 opacity-90" />
           <div className="absolute -right-36 top-8 h-80 w-80 rounded-full hero-blob-2 opacity-90" />
           <div className="absolute inset-0 pointer-events-none">
-            <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0,96L80,80C160,64,320,32,480,26.7C640,21,800,43,960,56C1120,69,1280,75,1360,78.7L1440,82V120H1360C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120H0Z" fill="url(#g)" opacity="0.6" />
+            <svg
+              className="absolute bottom-0 left-0 w-full"
+              viewBox="0 0 1440 120"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0,96L80,80C160,64,320,32,480,26.7C640,21,800,43,960,56C1120,69,1280,75,1360,78.7L1440,82V120H1360C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120H0Z"
+                fill="url(#g)"
+                opacity="0.6"
+              />
               <defs>
                 <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="0%">
                   <stop offset="0%" stopColor="rgba(17,94,73,0.18)" />
@@ -253,8 +266,9 @@ export default function Index() {
                 Kelvio — Pay Anyone, Anywhere
               </h1>
               <p className="text-lg text-foreground/75">
-                Inspired by Yamersal’s precision, our platform delivers concierge onboarding, adaptive compliance, and
-                instant settlement intelligence across every corridor you scale into.
+                Inspired by Yamersal’s precision, our platform delivers
+                concierge onboarding, adaptive compliance, and instant
+                settlement intelligence across every corridor you scale into.
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -275,11 +289,16 @@ export default function Index() {
             <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-inner-card sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
                 {[...Array(5)].map((_, index) => (
-                  <Star key={index} className="h-5 w-5 fill-primary text-primary" />
+                  <Star
+                    key={index}
+                    className="h-5 w-5 fill-primary text-primary"
+                  />
                 ))}
               </div>
               <div className="space-y-1 text-sm text-foreground/70">
-                <p className="font-semibold text-foreground/85">140,000+ operators routed premium flows with Kelvio.</p>
+                <p className="font-semibold text-foreground/85">
+                  140,000+ operators routed premium flows with Kelvio.
+                </p>
                 <p>98.7% satisfaction, audited every quarter.</p>
               </div>
               <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-foreground/55">
@@ -303,7 +322,9 @@ export default function Index() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-xs text-foreground/60">You send</div>
-                    <div className="text-2xl font-semibold">{amount.toLocaleString('en-US')}</div>
+                    <div className="text-2xl font-semibold">
+                      {amount.toLocaleString("en-US")}
+                    </div>
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full border px-3 py-2 surface-pill">
                     <span className="text-sm font-semibold">USD</span>
@@ -320,31 +341,47 @@ export default function Index() {
               <div className="mt-3 space-y-2 rounded-xl dark-surface p-4 text-sm text-foreground">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 text-sm text-foreground/70">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">-</span>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">
+                      -
+                    </span>
                     <span>Our fee</span>
                   </div>
-                  <div className="font-semibold text-foreground/90">${fee.toFixed(2)}</div>
+                  <div className="font-semibold text-foreground/90">
+                    ${fee.toFixed(2)}
+                  </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 text-sm text-foreground/70">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">=</span>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">
+                      =
+                    </span>
                     <span>We'll Convert</span>
                   </div>
-                  <div className="font-semibold text-foreground/90">${(amount - fee).toLocaleString('en-US')}</div>
+                  <div className="font-semibold text-foreground/90">
+                    ${(amount - fee).toLocaleString("en-US")}
+                  </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 text-sm text-foreground/70">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">×</span>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">
+                      ×
+                    </span>
                     <span>Kelvio Rate</span>
                   </div>
-                  <div className="font-semibold text-foreground/90">{(receive / total).toFixed(4)}</div>
+                  <div className="font-semibold text-foreground/90">
+                    {(receive / total).toFixed(4)}
+                  </div>
                 </div>
               </div>
 
               <div className="mt-4 rounded-xl dark-surface p-4 text-foreground">
                 <div className="text-xs text-foreground/60">Recipient gets</div>
                 <div className="flex items-center justify-between">
-                  <div className="text-2xl font-semibold">{receive.toLocaleString('en-US', { maximumFractionDigits: 2 })}</div>
+                  <div className="text-2xl font-semibold">
+                    {receive.toLocaleString("en-US", {
+                      maximumFractionDigits: 2,
+                    })}
+                  </div>
                   <div className="inline-flex items-center gap-2 rounded-full border px-3 py-2 surface-pill">
                     <span className="text-sm font-semibold">AUS</span>
                     <ChevronDown className="h-4 w-4 text-foreground/60" />
@@ -359,7 +396,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
 
       <section
         id="exchange"
@@ -376,8 +412,9 @@ export default function Index() {
               Premium corridors with transparent spreads and blended fees.
             </h2>
             <p className="mx-auto max-w-3xl text-sm text-white/80">
-              Indicative wholesale rates, refreshed continuously by Kelvio treasury desks. Lock pricing in the console or
-              connect via API for automated rate capture.
+              Indicative wholesale rates, refreshed continuously by Kelvio
+              treasury desks. Lock pricing in the console or connect via API for
+              automated rate capture.
             </p>
           </div>
           <div className="mt-10 overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/10 shadow-inner-card">
@@ -392,11 +429,15 @@ export default function Index() {
               </thead>
               <tbody>
                 {exchangeRates.map((rate) => (
-                  <tr key={rate.corridor} className="border-b border-white/10 last:border-none">
+                  <tr
+                    key={rate.corridor}
+                    className="border-b border-white/10 last:border-none"
+                  >
                     <td className="px-6 py-5 text-base font-semibold text-white">
                       <div className="flex items-center gap-3">
                         {(() => {
-                          const parts = rate.corridor.match(/[A-Z]{2,4}/g) || [];
+                          const parts =
+                            rate.corridor.match(/[A-Z]{2,4}/g) || [];
                           const map: Record<string, string> = {
                             USD: "us",
                             AED: "ae",
@@ -408,16 +449,25 @@ export default function Index() {
                             CNY: "cn",
                             AUD: "au",
                             SAR: "sa",
-                    
                           };
 
-                          const left = parts[0] ? map[parts[0]] || parts[0].slice(0,2).toLowerCase() : null;
-                          const right = parts[1] ? map[parts[1]] || parts[1].slice(0,2).toLowerCase() : null;
+                          const left = parts[0]
+                            ? map[parts[0]] ||
+                              parts[0].slice(0, 2).toLowerCase()
+                            : null;
+                          const right = parts[1]
+                            ? map[parts[1]] ||
+                              parts[1].slice(0, 2).toLowerCase()
+                            : null;
 
                           return (
                             <div className="flex items-center gap-3">
-                              {left ? <FlagBadge code={left.toUpperCase()} /> : null}
-                              {right ? <FlagBadge code={right.toUpperCase()} /> : null}
+                              {left ? (
+                                <FlagBadge code={left.toUpperCase()} />
+                              ) : null}
+                              {right ? (
+                                <FlagBadge code={right.toUpperCase()} />
+                              ) : null}
                               <span className="ml-2">{rate.corridor}</span>
                             </div>
                           );
@@ -466,20 +516,27 @@ export default function Index() {
             Curated luxury corridors ready for immediate launch.
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-foreground/65">
-            Each corridor includes localized compliance playbooks, settlement windows, and beneficiary verification to
-            keep every payout seamless.
+            Each corridor includes localized compliance playbooks, settlement
+            windows, and beneficiary verification to keep every payout seamless.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {corridorCards.map((card) => (
-            <div key={card.name} className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 text-left shadow-inner-card transition-transform duration-300 hover:-translate-y-1">
+            <div
+              key={card.name}
+              className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 text-left shadow-inner-card transition-transform duration-300 hover:-translate-y-1"
+            >
               <div className="flex items-center justify-between">
                 <FlagBadge code={card.flag} />
                 <ChevronRight className="h-4 w-4 text-foreground/40" />
               </div>
               <div className="mt-6 space-y-2">
-                <p className="text-lg font-semibold text-foreground/85">{card.name}</p>
-                <p className="text-xs uppercase tracking-[0.35em] text-foreground/50">{card.descriptor}</p>
+                <p className="text-lg font-semibold text-foreground/85">
+                  {card.name}
+                </p>
+                <p className="text-xs uppercase tracking-[0.35em] text-foreground/50">
+                  {card.descriptor}
+                </p>
               </div>
               <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-foreground/55">
                 Launch corridor
@@ -490,58 +547,78 @@ export default function Index() {
         </div>
       </section>
 
-      <section
-         id="steps"
-         className="mx-auto w-full max-w-7xl px-6 lg:px-2"
-       >
-         <div className="px-6 py-12 lg:px-2">
-           {/* HOW IT WORKS - four step illustrated flow */}
-           <div className="mt-10 w-full">
-             <div className="text-center">
-               <h2 className="text-3xl font-extrabold text-[hsl(var(--secondary))] sm:text-4xl">Just few steps to start</h2>
-               <p className="mx-auto mt-2 max-w-2xl text-sm text-foreground/65">It's easier than you think. Follow 3 simple easy steps</p>
-             </div>
+      <section id="steps" className="mx-auto w-full max-w-7xl px-6 lg:px-2">
+        <div className="px-6 py-12 lg:px-2">
+          {/* HOW IT WORKS - four step illustrated flow */}
+          <div className="mt-10 w-full">
+            <div className="text-center">
+              <h2 className="text-3xl font-extrabold text-[hsl(var(--secondary))] sm:text-4xl">
+                Just few steps to start
+              </h2>
+              <p className="mx-auto mt-2 max-w-2xl text-sm text-foreground/65">
+                It's easier than you think. Follow 3 simple easy steps
+              </p>
+            </div>
 
-             <div className="mt-8 flex w-full flex-col items-center  lg:flex-row lg:items-center lg:justify-between">
-               {processSteps.map((step, i) => (
-                 <React.Fragment key={step.title}>
-                   <div className="flex w-full   flex-col items-center text-center relative z-10">
-                     <div className="flex h-20 w-20 items-center justify-center">
-                       <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-1 ring-primary/30 shadow-glow">
-                         <img src={stepIcons[i]} alt={step.title} className="h-10 w-10 object-contain tint-green" />
-                       </span>
-                     </div>
+            <div className="mt-8 flex w-full flex-col items-center  lg:flex-row lg:items-center lg:justify-between">
+              {processSteps.map((step, i) => (
+                <React.Fragment key={step.title}>
+                  <div className="flex w-full   flex-col items-center text-center relative z-10">
+                    <div className="flex h-20 w-20 items-center justify-center">
+                      <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-1 ring-primary/30 shadow-glow">
+                        <img
+                          src={stepIcons[i]}
+                          alt={step.title}
+                          className="h-10 w-10 object-contain tint-green"
+                        />
+                      </span>
+                    </div>
 
-                     <h3 className="mt-4 text-lg font-semibold text-foreground">{step.title}</h3>
-                     <p className="mt-2 text-sm text-foreground/65">{step.description}</p>
-                   </div>
+                    <h3 className="mt-4 text-lg font-semibold text-foreground">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-foreground/65">
+                      {step.description}
+                    </p>
+                  </div>
 
-                   {i < processSteps.length - 1 && (
-                     <div className="flex items-center justify-center px-6 text-primary/60 -mt-6" aria-hidden>
-                       <svg width="132" height="28" viewBox="0 0 132 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-32">
-                         <path d="M10 18 C42 6, 90 6, 122 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-                         <path d="M114 10 L122 18 L114 26" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                       </svg>
-                     </div>
-                   )}
-                 </React.Fragment>
-               ))}
-             </div>
-           </div>
-         </div>
-       </section>
-
-
-
-
-
-
-
-       
-
-
-
-
-     </div>
-   );
- }
+                  {i < processSteps.length - 1 && (
+                    <div
+                      className="flex items-center justify-center px-6 text-primary/60 -mt-6"
+                      aria-hidden
+                    >
+                      <svg
+                        width="132"
+                        height="28"
+                        viewBox="0 0 132 28"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-7 w-32"
+                      >
+                        <path
+                          d="M10 18 C42 6, 90 6, 122 18"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          fill="none"
+                        />
+                        <path
+                          d="M114 10 L122 18 L114 26"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
