@@ -220,9 +220,12 @@ export default function Index() {
         id="hero"
         className="relative mx-auto w-full  overflow-hidden  px-6 pt-24 lg:px-10 lg:pt-28"
       >
-        <video src="/0_Earth_Global_1920x1080.mov" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-40" autoPlay muted loop playsInline>
-          <source src="/0_Earth_Global_1920x1080.mov" />
-        </video>
+  <video className="absolute inset-0 -z-20 h-full w-full object-cover opacity-40" autoPlay muted loop playsInline>
+  <source src="/0_Earth_Global_1920x1080.mov" type="video/quicktime" />
+  <source src="/0_Earth_Global_1920x1080.mp4" type="video/mp4" />
+  <source src="/0_Earth_Global_1920x1080.webm" type="video/webm" />
+  Your browser does not support the video tag.
+</video>
         <div className="absolute inset-0 -z-10  opacity-70">
           <div className="absolute inset-0 hero-bg" />
           <div className="absolute -left-40 -top-20 h-96 w-96 rounded-full hero-blob-1 opacity-90" />
