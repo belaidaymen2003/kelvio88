@@ -1,0 +1,256 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Dark theme by default (user prefers a non-white global background) */
+  :root {
+    /* Background & text */
+    --background: 222 18% 6%; /* deep navy */
+    --foreground: 213 18% 96%; /* near-white text */
+
+    /* Surfaces */
+    --card: 222 20% 8%;
+    --card-foreground: 213 18% 96%;
+
+    --popover: 222 20% 10%;
+    --popover-foreground: 213 18% 96%;
+
+    /* Brand colors (from provided logo: green & gold) */
+    --primary: 157 80% 28%; /* green */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 45 98% 48%; /* gold */
+    --secondary-foreground: 213 18% 12%;
+
+    --muted: 222 12% 12%;
+    --muted-foreground: 213 18% 78%;
+
+    --accent: 45 98% 48%;
+    --accent-foreground: 213 18% 96%;
+
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 12%;
+    --input: 220 12% 10%;
+    --ring: 157 80% 28%;
+
+    --radius: 1rem;
+
+    /* sidebar tokens (dark) */
+    --sidebar-background: 222 20% 6%;
+    --sidebar-foreground: 213 18% 96%;
+    --sidebar-primary: 157 80% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 98% 40%;
+    --sidebar-accent-foreground: 213 18% 94%;
+    --sidebar-border: 220 12% 10%;
+    --sidebar-ring: 157 80% 28%;
+  }
+
+  /* Dark overrides (preserve dark theme option) */
+  .dark {
+    --background: 222 20% 6%;
+    --foreground: 213 18% 96%;
+
+    --card: 222 22% 8%;
+    --card-foreground: 213 18% 96%;
+
+    --popover: 222 22% 10%;
+    --popover-foreground: 213 18% 96%;
+
+    --primary: 157 80% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 98% 45%;
+    --secondary-foreground: 213 18% 96%;
+
+    --muted: 220 14% 12%;
+    --muted-foreground: 213 18% 78%;
+
+    --accent: 45 98% 45%;
+    --accent-foreground: 213 18% 96%;
+
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 12%;
+    --input: 220 14% 12%;
+    --ring: 157 80% 28%;
+
+    --sidebar-background: 222 22% 6%;
+    --sidebar-foreground: 213 18% 96%;
+    --sidebar-primary: 157 80% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 98% 40%;
+    --sidebar-accent-foreground: 213 18% 94%;
+    --sidebar-border: 220 12% 10%;
+    --sidebar-ring: 157 80% 28%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    direction: ltr;
+    text-align: left;
+    font-family: "Sora", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-image: radial-gradient(1200px 600px at 10% 10%, rgba(16,120,86,0.08), transparent 15%), radial-gradient(1000px 500px at 90% 30%, rgba(230,190,60,0.06), transparent 18%), linear-gradient(180deg, hsl(222 18% 6%) 0%, hsl(222 18% 4%) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  a {
+    @apply text-foreground/80 transition-colors duration-200;
+  }
+
+  a:hover {
+    color: hsl(var(--primary));
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer utilities {
+  .bg-glass {
+    background: linear-gradient(
+      160deg,
+      rgba(18, 24, 44, 0.9) 0%,
+      rgba(28, 14, 58, 0.75) 100%
+    );
+    backdrop-filter: blur(24px);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      120deg,
+      hsl(var(--secondary)) 0%,
+      hsl(var(--secondary)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .stroke-gradient {
+    position: relative;
+  }
+
+  .stroke-gradient::after {
+    position: absolute;
+    inset: calc(50% + 1.5rem) auto auto 0;
+    width: 8rem;
+    height: 2px;
+    content: "";
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 100%
+    );
+  }
+
+  /* Common shared button used across the site */
+  .cmn-btn {
+    @apply rounded-full font-semibold text-primary-foreground inline-flex items-center justify-center;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 18px 40px -20px rgba(21, 128, 99, 0.25), 0 6px 18px -6px rgba(0,0,0,0.06);
+    transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms;
+  }
+
+  .cmn-btn:hover {
+    transform: translateY(-4px);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 30px 80px -40px rgba(16, 120, 86, 0.18);
+  }
+
+  .blue-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+  }
+
+  .light-card {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(2, 6, 23, 0.06);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);
+  }
+
+  .light-muted {
+    color: #334155;
+  }
+
+  .light-heading {
+    color: #0b1220;
+  }
+
+  /* Hero backgrounds and blobs */
+  .hero-bg {
+    background: radial-gradient(700px 420px at 12% 22%, rgba(16,120,86,0.16), transparent 18%),
+                radial-gradient(600px 360px at 88% 36%, rgba(230,190,60,0.12), transparent 16%),
+                linear-gradient(180deg, hsl(222 18% 8%) 0%, hsl(222 18% 6%) 100%);
+    filter: saturate(1.08) contrast(1.02);
+    transform: translateZ(0);
+  }
+
+  .hero-blob-1 {
+    background: linear-gradient(135deg, rgba(16,120,86,0.95), rgba(26,150,105,0.75));
+    mix-blend-mode: multiply;
+    filter: blur(40px) saturate(1.1);
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .hero-blob-2 {
+    background: linear-gradient(135deg, rgba(230,190,60,0.95), rgba(245,210,100,0.75));
+    mix-blend-mode: screen;
+    filter: blur(36px) saturate(1.05);
+    animation: float 12s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0) scale(1); }
+    50% { transform: translateY(-14px) translateX(6px) scale(1.03); }
+    100% { transform: translateY(0) translateX(0) scale(1); }
+  }
+
+  /* Alternative CTA used by the calculator widget (now brand green) */
+  .alt-cta {
+    @apply rounded-2xl font-semibold inline-flex items-center justify-center w-full;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+    color: hsl(var(--primary-foreground));
+    padding: 12px 18px;
+    box-shadow: 0 10px 30px -10px rgba(16,120,86,0.28);
+    transition: transform 180ms ease;
+  }
+
+  .alt-cta:hover { transform: translateY(-3px); }
+
+  /* Dark surface styles to avoid bright white panels on dark theme */
+  .dark-surface {
+    background: linear-gradient(180deg, rgba(9,10,12,0.6), rgba(8,9,12,0.55));
+    border: 1px solid rgba(255,255,255,0.03);
+    color: hsl(var(--foreground));
+  }
+
+  .surface-pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.04);
+    color: hsl(var(--foreground));
+  }
+
+  /* Tint images toward brand green (works for purple base icons) */
+  .tint-green {
+    filter: grayscale(1) sepia(1) hue-rotate(110deg) saturate(6) brightness(1.05) contrast(0.95);
+  }
+}
