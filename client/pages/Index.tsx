@@ -189,6 +189,37 @@ const FlagBadge = ({ code }: { code: string }) => {
   );
 };
 
+const services = [
+  {
+    title: "Payments",
+    description:
+      "Send instant and scheduled payments across currencies with bank‑grade security and transparent pricing.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F8185186041484c6ab4b98ea443cceed6?format=webp&width=800",
+  },
+  {
+    title: "Collections",
+    description:
+      "Accept funds via local rails and reconcile in real‑time with automated notifications.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2Fe2c29867ccbf444d975b08d275b3c4f1?format=webp&width=800",
+  },
+  {
+    title: "Conversions",
+    description:
+      "Convert between currencies at competitive FX with live quotes and rate locking.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F90bf235122a64e18ac70bd6351a26968?format=webp&width=800",
+  },
+  {
+    title: "Global Account",
+    description:
+      "Open multi‑currency accounts to hold, manage and settle balances worldwide.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F7c70c10f64d8468fbac28a31f6a2a4b9?format=webp&width=800",
+  },
+];
+
 export default function Index() {
   const [origin, setOrigin] = useState(originCountries[0]);
   const [destination, setDestination] = useState(destinationOptions[0]);
@@ -394,6 +425,50 @@ export default function Index() {
               </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="our-services" className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1e3a] via-[#0b1e3a] to-transparent opacity-95" />
+          <div className="relative px-6 py-16 text-center lg:px-12">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
+              High speeds. Low fees. No hassle.
+            </span>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              All Your Payments In One Place
+            </h2>
+            <p className="mx-auto mt-2 max-w-2xl text-sm text-white/85">
+              Get used to low fees and great exchange rates on international money transfers. Expand your business worldwide.
+            </p>
+          </div>
+          <svg
+            className="absolute bottom-0 left-0 w-full"
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,96L80,80C160,64,320,32,480,26.7C640,21,800,43,960,56C1120,69,1280,75,1360,78.7L1440,82V120H1360C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120H0Z"
+              fill="hsl(var(--background))"
+              opacity="1"
+            />
+          </svg>
+        </div>
+
+        <div className="-mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((item) => (
+            <div
+              key={item.title}
+              className="group rounded-3xl border border-white/10 bg-white/5 p-6 text-center shadow-inner-card transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-primary/30 shadow-glow">
+                <img src={item.icon} alt={item.title} className="h-9 w-9 object-contain tint-green" />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-foreground/90">{item.title}</h3>
+              <p className="mt-2 text-sm text-foreground/65">{item.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
