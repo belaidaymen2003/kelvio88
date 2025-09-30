@@ -20,6 +20,7 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const originCountries = [
   { code: "AE", name: "United Arab Emirates" },
@@ -75,9 +76,9 @@ const velocityHighlights = [
 ];
 
 const exchangeRates = [
-  { corridor: "USD �� AED", buy: 3.66, sell: 3.68 },
+  { corridor: "USD → AED", buy: 3.66, sell: 3.68 },
   { corridor: "EUR → USD", buy: 1.08, sell: 1.1 },
-  { corridor: "GBP �� SAR", buy: 4.66, sell: 4.71 },
+  { corridor: "GBP → SAR", buy: 4.66, sell: 4.71 },
   { corridor: "SGD → CNY", buy: 5.28, sell: 5.35 },
   { corridor: "AED → NGN", buy: 403.0, sell: 409.0 },
   { corridor: "USD → INR", buy: 82.5, sell: 82.9 },
@@ -102,7 +103,6 @@ const corridorCards = [
   { flag: "EG", name: "Egypt", descriptor: "EGP stabilization" },
 ];
 
-// Home services feature items (icons provided by user)
 const serviceFeatures = [
   {
     title: "Peace of Mind",
@@ -204,6 +204,34 @@ const faqs = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, ease: "easeOut" },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const slideUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 36 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 const FlagBadge = ({ code }: { code: string }) => {
   const key = String(code || "");
   const codeLower = key.toLowerCase();
@@ -220,37 +248,6 @@ const FlagBadge = ({ code }: { code: string }) => {
     </span>
   );
 };
-
-const services = [
-  {
-    title: "Payments",
-    description:
-      "Send instant and scheduled payments across currencies with bank‑grade security and transparent pricing.",
-    icon:
-      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F8185186041484c6ab4b98ea443cceed6?format=webp&width=800",
-  },
-  {
-    title: "Collections",
-    description:
-      "Accept funds via local rails and reconcile in real‑time with automated notifications.",
-    icon:
-      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2Fe2c29867ccbf444d975b08d275b3c4f1?format=webp&width=800",
-  },
-  {
-    title: "Conversions",
-    description:
-      "Convert between currencies at competitive FX with live quotes and rate locking.",
-    icon:
-      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F90bf235122a64e18ac70bd6351a26968?format=webp&width=800",
-  },
-  {
-    title: "Global Account",
-    description:
-      "Open multi‑currency accounts to hold, manage and settle balances worldwide.",
-    icon:
-      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F7c70c10f64d8468fbac28a31f6a2a4b9?format=webp&width=800",
-  },
-];
 
 export default function Index() {
   const [origin, setOrigin] = useState(originCountries[0]);
@@ -319,22 +316,28 @@ export default function Index() {
           </div>
         </div>
         <div className="relative grid gap-12 px-6 py-16 lg:grid-cols-[1.15fr,0.85fr] lg:px-12">
-          <div className="space-y-10">
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="space-y-10"
+          >
+            <motion.div variants={item} className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-primary via-accent to-secondary" />
               Premium payout gateway
-            </div>
+            </motion.div>
             <div className="space-y-6">
-              <h1 className="text-balance text-4xl font-extrabold tracking-tight text-[hsl(var(--secondary))] sm:text-5xl lg:text-[56px]">
+              <motion.h1 variants={item} className="text-balance text-4xl font-extrabold tracking-tight text-[hsl(var(--secondary))] sm:text-5xl lg:text-[56px]">
                 Kelvio — Pay Anyone, Anywhere
-              </h1>
-              <p className="text-lg text-foreground/75">
+              </motion.h1>
+              <motion.p variants={item} className="text-lg text-foreground/75">
                 Inspired by Yamersal’s precision, our platform delivers
                 concierge onboarding, adaptive compliance, and instant
                 settlement intelligence across every corridor you scale into.
-              </p>
+              </motion.p>
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <motion.div variants={item} className="flex flex-col gap-4 sm:flex-row">
               <a
                 href="#exchange"
                 className="cmn-btn inline-flex items-center justify-center gap-2 px-8 py-3"
@@ -348,8 +351,8 @@ export default function Index() {
               >
                 See how it works
               </Link>
-            </div>
-            <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-inner-card sm:flex-row sm:items-center sm:justify-between">
+            </motion.div>
+            <motion.div variants={item} className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-inner-card sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
                 {[...Array(5)].map((_, index) => (
                   <Star
@@ -367,9 +370,15 @@ export default function Index() {
               <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-foreground/55">
                 SOC2 • PCI • ISO
               </div>
-            </div>
-          </div>
-          <div className="relative">
+            </motion.div>
+          </motion.div>
+          <motion.div
+            variants={slideRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative"
+          >
             <div className="pointer-events-none absolute -right-20 top-10 hidden h-44 w-44 rounded-full bg-hero blur-3xl opacity-60 lg:block" />
             <div className="relative rounded-[1.5rem] border border-white/6 bg-neutral-900/80 p-6 shadow-lg">
               <div className="flex items-center justify-between text-sm text-foreground/60">
@@ -427,7 +436,7 @@ export default function Index() {
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 text-sm text-foreground/70">
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">
-                      ×
+                      ��
                     </span>
                     <span>Kelvio Rate</span>
                   </div>
@@ -437,43 +446,34 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="mt-4 rounded-xl dark-surface p-4 text-foreground">
-                <div className="text-xs text-foreground/60">Recipient gets</div>
-                <div className="flex items-center justify-between">
-                  <div className="text-2xl font-semibold">
-                    {receive.toLocaleString("en-US", {
-                      maximumFractionDigits: 2,
-                    })}
-                  </div>
-                  <div className="inline-flex items-center gap-2 rounded-full border px-3 py-2 surface-pill">
-                    <span className="text-sm font-semibold">AUS</span>
-                    <ChevronDown className="h-4 w-4 text-foreground/60" />
-                  </div>
-                </div>
-              </div>
-
               <button type="button" className="mt-4 alt-cta">
                 Get Started
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       <section id="our-services" className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10">
           <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b1e3a] via-[#0b1e3a] to-transparent opacity-95" />
-          <div className="relative px-6 py-16 text-center lg:px-12">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative px-6 py-16 text-center lg:px-12"
+          >
+            <motion.span variants={item} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
               High speeds. Low fees. No hassle.
-            </span>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            </motion.span>
+            <motion.h2 variants={item} className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               All Your Payments In One Place
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-sm text-white/85">
+            </motion.h2>
+            <motion.p variants={item} className="mx-auto mt-2 max-w-2xl text-sm text-white/85">
               Get used to low fees and great exchange rates on international money transfers. Expand your business worldwide.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <svg
             className="absolute bottom-0 left-0 w-full"
             viewBox="0 0 1440 120"
@@ -490,8 +490,13 @@ export default function Index() {
 
         <div className="-mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((item) => (
-            <div
+            <motion.div
               key={item.title}
+              variants={slideUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ y: -4 }}
               className="group rounded-3xl border border-white/10 bg-white/5 p-6 text-center shadow-inner-card transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-primary/30 shadow-glow">
@@ -499,7 +504,7 @@ export default function Index() {
               </div>
               <h3 className="mt-5 text-lg font-semibold text-foreground/90">{item.title}</h3>
               <p className="mt-2 text-sm text-foreground/65">{item.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -509,20 +514,26 @@ export default function Index() {
         className="relative mx-auto w-full max-w-7xl px-6 lg:px-10"
       >
         <div className="absolute inset-0 -z-10 rounded-[3rem] border border-primary/20 bg-gradient-to-br from-primary/25 via-accent/20 to-secondary/25 shadow-glow" />
-        <div className="relative px-6 py-16 text-foreground lg:px-12">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="relative px-6 py-16 text-foreground lg:px-12"
+        >
           <div className="flex flex-col gap-6 text-center">
-            <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+            <motion.span variants={item} className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
               <TrendingUp className="h-4 w-4" />
               Live FX matrix
-            </span>
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            </motion.span>
+            <motion.h2 variants={item} className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Premium corridors with transparent spreads and blended fees.
-            </h2>
-            <p className="mx-auto max-w-3xl text-sm text-white/80">
+            </motion.h2>
+            <motion.p variants={item} className="mx-auto max-w-3xl text-sm text-white/80">
               Indicative wholesale rates, refreshed continuously by Kelvio
               treasury desks. Lock pricing in the console or connect via API for
               automated rate capture.
-            </p>
+            </motion.p>
           </div>
           <div className="mt-10 overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/10 shadow-inner-card">
             <table className="w-full min-w-[640px] text-left text-sm text-white/80">
@@ -534,10 +545,11 @@ export default function Index() {
                   <th className="px-6 py-4 text-right">Trend</th>
                 </tr>
               </thead>
-              <tbody>
+              <motion.tbody initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ show: { transition: { staggerChildren: 0.06 } } }}>
                 {exchangeRates.map((rate) => (
-                  <tr
+                  <motion.tr
                     key={rate.corridor}
+                    variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }}
                     className="border-b border-white/10 last:border-none"
                   >
                     <td className="px-6 py-5 text-base font-semibold text-white">
@@ -589,33 +601,45 @@ export default function Index() {
                         Stable
                       </span>
                     </td>
-                  </tr>
+                  </motion.tr>
                 ))}
-              </tbody>
+              </motion.tbody>
             </table>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section id="services" className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="relative px-6 py-16 lg:px-12">
-          <div className="flex flex-col gap-6 text-center">
-            <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex flex-col gap-6 text-center"
+          >
+            <motion.span variants={item} className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
               Send money in a heartbeat
-            </span>
-            <h2 className="text-3xl font-semibold tracking-tight text-[hsl(var(--secondary))] sm:text-4xl">The World At Your Fingertips</h2>
-            <p className="mx-auto max-w-3xl text-sm text-foreground/65">Sign up to start saving on international money transfers and currency exchange.</p>
-          </div>
+            </motion.span>
+            <motion.h2 variants={item} className="text-3xl font-semibold tracking-tight text-[hsl(var(--secondary))] sm:text-4xl">The World At Your Fingertips</motion.h2>
+            <motion.p variants={item} className="mx-auto max-w-3xl text-sm text-foreground/65">Sign up to start saving on international money transfers and currency exchange.</motion.p>
+          </motion.div>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-inner-card">
+            <motion.div
+              variants={slideUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-inner-card"
+            >
               <img src="https://pixner.net/paylio/paylio-v1/assets/images/global-payment-img.png" alt="Woman using laptop to send money" className="h-full w-full rounded-2xl object-cover" />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-primary/20" />
-            </div>
+            </motion.div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {serviceFeatures.map((f) => (
-                <div key={f.title} className="group rounded-3xl border border-white/10 bg-white/5 p-6 shadow-inner-card transition-transform duration-300 hover:-translate-y-1">
+                <motion.div key={f.title} variants={slideUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} whileHover={{ y: -4 }} className="group rounded-3xl border border-white/10 bg-white/5 p-6 shadow-inner-card transition-transform duration-300 hover:-translate-y-1">
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 ring-1 ring-primary/30">
                       <img src={f.icon} alt={f.title} className="h-7 w-7 object-contain tint-green" />
@@ -623,7 +647,7 @@ export default function Index() {
                     <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
                   </div>
                   <p className="mt-3 text-sm text-foreground/65">{f.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -634,13 +658,18 @@ export default function Index() {
         id="corridors"
         className="mx-auto w-full max-w-7xl px-6 lg:px-10"
       >
-        <div className="space-y-8 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="space-y-8 text-center"
+        >
+          <motion.span variants={item} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-foreground/60">
             <Globe2 className="h-4 w-4" />
             Where can you disburse?
-          </span>
+          </motion.span>
 
-          {/* Luxury country flags row */}
           <div className="mx-auto flex w-fit items-center gap-3">
             <div className="flex items-center gap-2 text-sm text-foreground/70">
               <FlagBadge code="AE" />
@@ -652,18 +681,23 @@ export default function Index() {
             </div>
           </div>
 
-          <h2 className="text-3xl font-semibold tracking-tight text-[hsl(var(--secondary))] sm:text-4xl">
+          <motion.h2 variants={item} className="text-3xl font-semibold tracking-tight text-[hsl(var(--secondary))] sm:text-4xl">
             Curated luxury corridors ready for immediate launch.
-          </h2>
-          <p className="mx-auto max-w-2xl text-sm text-foreground/65">
+          </motion.h2>
+          <motion.p variants={item} className="mx-auto max-w-2xl text-sm text-foreground/65">
             Each corridor includes localized compliance playbooks, settlement
             windows, and beneficiary verification to keep every payout seamless.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {corridorCards.map((card) => (
-            <div
+            <motion.div
               key={card.name}
+              variants={slideUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ y: -4 }}
               className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 text-left shadow-inner-card transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="flex items-center justify-between">
@@ -682,14 +716,13 @@ export default function Index() {
                 Launch corridor
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       <section id="steps" className="mx-auto w-full max-w-7xl px-6 lg:px-2">
         <div className="px-6 py-12 lg:px-2">
-          {/* HOW IT WORKS - four step illustrated flow */}
           <div className="mt-10 w-full">
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-[hsl(var(--secondary))] sm:text-4xl">
@@ -703,7 +736,13 @@ export default function Index() {
             <div className="mt-8 flex w-full flex-col items-center  lg:flex-row lg:items-center lg:justify-between">
               {processSteps.map((step, i) => (
                 <React.Fragment key={step.title}>
-                  <div className="flex w-full   flex-col items-center text-center relative z-10">
+                  <motion.div
+                    variants={slideUp}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="flex w-full   flex-col items-center text-center relative z-10"
+                  >
                     <div className="flex h-20 w-20 items-center justify-center">
                       <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-1 ring-primary/30 shadow-glow">
                         <img
@@ -720,7 +759,7 @@ export default function Index() {
                     <p className="mt-2 text-sm text-foreground/65">
                       {step.description}
                     </p>
-                  </div>
+                  </motion.div>
 
                   {i < processSteps.length - 1 && (
                     <div
