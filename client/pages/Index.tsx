@@ -208,7 +208,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, ease: "easeOut" },
+    transition: { staggerChildren: 0.08 },
   },
 };
 
@@ -219,18 +219,49 @@ const item = {
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const slideUp = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const slideRight = {
   hidden: { opacity: 0, x: 36 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
+
+const services = [
+  {
+    title: "Payments",
+    description:
+      "Send instant and scheduled payments across currencies with bank‑grade security and transparent pricing.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F8185186041484c6ab4b98ea443cceed6?format=webp&width=800",
+  },
+  {
+    title: "Collections",
+    description:
+      "Accept funds via local rails and reconcile in real‑time with automated notifications.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2Fe2c29867ccbf444d975b08d275b3c4f1?format=webp&width=800",
+  },
+  {
+    title: "Conversions",
+    description:
+      "Convert between currencies at competitive FX with live quotes and rate locking.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F90bf235122a64e18ac70bd6351a26968?format=webp&width=800",
+  },
+  {
+    title: "Global Account",
+    description:
+      "Open multi‑currency accounts to hold, manage and settle balances worldwide.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb07161314e6e460a86182c01a942c953%2F7c70c10f64d8468fbac28a31f6a2a4b9?format=webp&width=800",
+  },
+];
 
 const FlagBadge = ({ code }: { code: string }) => {
   const key = String(code || "");
@@ -436,7 +467,7 @@ export default function Index() {
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 text-sm text-foreground/70">
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs">
-                      ��
+                      ×
                     </span>
                     <span>Kelvio Rate</span>
                   </div>
