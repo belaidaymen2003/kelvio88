@@ -102,6 +102,38 @@ const corridorCards = [
   { flag: "EG", name: "Egypt", descriptor: "EGP stabilization" },
 ];
 
+// Home services feature items (icons provided by user)
+const serviceFeatures = [
+  {
+    title: "Peace of Mind",
+    description:
+      "Bank-grade security with live risk controls, approvals, and observability built in.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2F9fd2514177c245268c9ec19641b85ee3?format=webp&width=800",
+  },
+  {
+    title: "Business-Ready",
+    description:
+      "Operator roles, programmatic payouts, and developer-first APIs ready for scale.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2F77da076c64ed47989da3b77d8eff603c?format=webp&width=800",
+  },
+  {
+    title: "100% Transparent",
+    description:
+      "Clear pricing, auditable logs, and real-time reporting across every corridor.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2Febc26c02dcb94baa8daff86187a2664a?format=webp&width=800",
+  },
+  {
+    title: "International Network",
+    description:
+      "Global disbursements to banks and wallets through premium, curated corridors.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2F9db11ac23f164dfab5c65c9f1601a910?format=webp&width=800",
+  },
+];
+
 const processSteps = [
   {
     title: "Register for free",
