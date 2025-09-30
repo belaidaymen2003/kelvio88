@@ -102,6 +102,38 @@ const corridorCards = [
   { flag: "EG", name: "Egypt", descriptor: "EGP stabilization" },
 ];
 
+// Home services feature items (icons provided by user)
+const serviceFeatures = [
+  {
+    title: "Peace of Mind",
+    description:
+      "Bank-grade security with live risk controls, approvals, and observability built in.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2F9fd2514177c245268c9ec19641b85ee3?format=webp&width=800",
+  },
+  {
+    title: "Business-Ready",
+    description:
+      "Operator roles, programmatic payouts, and developer-first APIs ready for scale.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2F77da076c64ed47989da3b77d8eff603c?format=webp&width=800",
+  },
+  {
+    title: "100% Transparent",
+    description:
+      "Clear pricing, auditable logs, and real-time reporting across every corridor.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2Febc26c02dcb94baa8daff86187a2664a?format=webp&width=800",
+  },
+  {
+    title: "International Network",
+    description:
+      "Global disbursements to banks and wallets through premium, curated corridors.",
+    icon:
+      "https://cdn.builder.io/api/v1/image/assets%2Fbbe01ccabe514106861c5978ee577c77%2F9db11ac23f164dfab5c65c9f1601a910?format=webp&width=800",
+  },
+];
+
 const processSteps = [
   {
     title: "Register for free",
@@ -486,6 +518,39 @@ export default function Index() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+        <div className="relative px-6 py-16 lg:px-12">
+          <div className="flex flex-col gap-6 text-center">
+            <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+              Send money in a heartbeat
+            </span>
+            <h2 className="text-3xl font-semibold tracking-tight text-[hsl(var(--secondary))] sm:text-4xl">The World At Your Fingertips</h2>
+            <p className="mx-auto max-w-3xl text-sm text-foreground/65">Sign up to start saving on international money transfers and currency exchange.</p>
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 shadow-inner-card">
+              <img src="https://pixner.net/paylio/paylio-v1/assets/images/global-payment-img.png" alt="Woman using laptop to send money" className="h-full w-full rounded-2xl object-cover" />
+              <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-primary/20" />
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {serviceFeatures.map((f) => (
+                <div key={f.title} className="group rounded-3xl border border-white/10 bg-white/5 p-6 shadow-inner-card transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 ring-1 ring-primary/30">
+                      <img src={f.icon} alt={f.title} className="h-7 w-7 object-contain tint-green" />
+                    </span>
+                    <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
+                  </div>
+                  <p className="mt-3 text-sm text-foreground/65">{f.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
